@@ -8,7 +8,6 @@ namespace AnotherTestFramework
 {
     public class Browser
     {
-        private static IWebDriver webDriver;
         private static string baseURL = ConfigurationManager.AppSettings["url"];
         private static string browser = ConfigurationManager.AppSettings["browser"];
         public static void Init()
@@ -16,33 +15,30 @@ namespace AnotherTestFramework
             switch (browser)
             {
                 case "Chrome":
-                    webDriver = new ChromeDriver();
+                    GetDriver = new ChromeDriver();
                     break;
                 case "IE":
-                    webDriver = new InternetExplorerDriver();
+                    GetDriver = new InternetExplorerDriver();
                     break;
                 case "Firefox":
-                    webDriver = new FirefoxDriver();
+                    GetDriver = new FirefoxDriver();
                     break;
             }
-            webDriver.Manage().Window.Maximize();
+            GetDriver.Manage().Window.Maximize();
             Goto(baseURL);
         }
         public static string Title
         {
-            get { return webDriver.Title; }
+            get { return GetDriver.Title; }
         }
-        public static IWebDriver GetDriver
-        {
-            get { return webDriver; }
-        }
+        public static IWebDriver GetDriver { get; private set; }
         public static void Goto(string url)
         {
-            webDriver.Url = url;
+            GetDriver.Url = url;
         }
         public static void Close()
         {
-            webDriver.Quit();
+            GetDriver.Quit();
         }
     }
 }

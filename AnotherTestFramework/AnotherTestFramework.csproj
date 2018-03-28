@@ -55,6 +55,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Browser.cs" />
+    <Compile Include="PageObject\HomePage.cs" />
+    <Compile Include="PageObject\Support.cs" />
     <Compile Include="ReportingStuff\Report.cs" />
     <Compile Include="ReportingStuff\ReportManager.cs" />
     <Compile Include="TestWillBeTest\JustTest.cs" />
