@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AnotherTestFramework.PageObject
 {
-    public class Support
+    public class Register
     {
     }
 }

@@ -1,5 +1,6 @@
 ﻿using AnotherTestFramework.PageObject;
 using OpenQA.Selenium.Support.PageObjects;
+using AnotherTestFramework.DriverOptions;
 
 namespace AnotherTestFramework
 {
@@ -12,16 +13,19 @@ namespace AnotherTestFramework
             return page;
         }
 
+        //Home Page or Landing Page
         public static HomePage homePage
         {
             get { return getPages<HomePage>(); }
         }
 
-        public static Support support
+        //Register Page
+        public static Register register
         {
-            get { return getPages<Support>(); }
+            get { return getPages<Register>(); }
         }
+
     }
 
 }
-}
+

@@ -1,16 +1,15 @@
 ﻿using NUnit.Framework;
-using OpenQA.Selenium;
-using AnotherTestFramework;
+using AnotherTestFramework.SeleniumActions;
 
 namespace AnotherTestFramework.TestWillBeTest
 {
     [TestFixture]
-    public class Sanity : JustTest
+    public class Sanity : TestBase
     {
         [Test]
-        public void ClickSupport()
+        public void ClickSkipSignIn()
         {
-            Browser.GetDriver.FindElement(By.Id("menu_support")).Click();
+            Action.Selenium.ClickOn("Id", "btn2");
         }
     }
 }

@@ -4,12 +4,14 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 
-namespace AnotherTestFramework
+namespace AnotherTestFramework.DriverOptions
 {
     public class Browser
     {
         private static string baseURL = ConfigurationManager.AppSettings["url"];
         private static string browser = ConfigurationManager.AppSettings["browser"];
+        public static IWebDriver GetDriver { get; set; }
+
         public static void Init()
         {
             switch (browser)
@@ -31,7 +33,7 @@ namespace AnotherTestFramework
         {
             get { return GetDriver.Title; }
         }
-        public static IWebDriver GetDriver { get; private set; }
+        
         public static void Goto(string url)
         {
             GetDriver.Url = url;

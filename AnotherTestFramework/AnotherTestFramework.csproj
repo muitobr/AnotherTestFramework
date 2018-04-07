@@ -56,10 +56,12 @@
   <ItemGroup>
     <Compile Include="Browser.cs" />
     <Compile Include="PageObject\HomePage.cs" />
-    <Compile Include="PageObject\Support.cs" />
+    <Compile Include="PageObject\Register.cs" />
     <Compile Include="ReportingStuff\Report.cs" />
     <Compile Include="ReportingStuff\ReportManager.cs" />
-    <Compile Include="TestWillBeTest\JustTest.cs" />
+    <Compile Include="SeleniumActions\Action.cs" />
+    <Compile Include="SeleniumActions\SeleniumActions.cs" />
+    <Compile Include="TestWillBeTest\TestBase.cs" />
     <Compile Include="Page.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestWillBeTest\Sanity.cs" />

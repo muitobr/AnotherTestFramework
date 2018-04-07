@@ -1,14 +1,13 @@
 ﻿using NUnit.Framework;
+using AnotherTestFramework.DriverOptions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
 namespace AnotherTestFramework
 {
     [TestFixture]
-    public class JustTest
+    public class TestBase
     {
-        IWebDriver driver;
-
         [SetUp]
         public void StartTest() // The method that will be fired at the start of the test
         {
@@ -21,10 +20,5 @@ namespace AnotherTestFramework
             Browser.Close();
         }
 
-        //[Test]
-        //public void JustTest01() //This is where all action happens
-        //{
-        //    Assert.IsTrue(Page.support.isAt());
-        //}
     }
 }
