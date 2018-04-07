@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AnotherTestFramework.SeleniumActions;
 
 namespace AnotherTestFramework.PageObject
 {
     public class HomePage
     {
+        public static void ClickSkipSignIn()
+        {
+            Actions.Selenium.ClickOn("Id", "btn2");
+        }
     }
 }

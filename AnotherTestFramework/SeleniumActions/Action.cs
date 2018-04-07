@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AnotherTestFramework.SeleniumActions
 {
-    class Action
+    class Actions
     {
 
         private static T GetPage<T>() where T : new()

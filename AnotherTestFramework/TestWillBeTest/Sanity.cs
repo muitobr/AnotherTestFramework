@@ -1,5 +1,6 @@
-﻿using NUnit.Framework;
-using AnotherTestFramework.SeleniumActions;
+﻿using AnotherTestFramework.PageObject;
+using NUnit.Framework;
+
 
 namespace AnotherTestFramework.TestWillBeTest
 {
@@ -7,9 +8,9 @@ namespace AnotherTestFramework.TestWillBeTest
     public class Sanity : TestBase
     {
         [Test]
-        public void ClickSkipSignIn()
+        public void SanityTest()
         {
-            Action.Selenium.ClickOn("Id", "btn2");
+            HomePage.ClickSkipSignIn();
         }
     }
 }
