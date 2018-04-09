@@ -5,7 +5,7 @@ namespace AnotherTestFramework.PageObject
 {
     public class HomePage
     {
-        public static void ClickSkipSignIn()
+        public void ClickSkipSignIn()
         {
             Actions.Selenium.ClickOn("Id", "btn2");
         }

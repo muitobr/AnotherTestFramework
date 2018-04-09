@@ -14,17 +14,25 @@ namespace AnotherTestFramework
         private DateTime date;
         private FileStream fs;
         private StringBuilder reportcsv;
-        private string filePath;
+        private string path;
+        private string actualPath;
+        private string projectPath;
         private string fileName;
+        private string filePath;
+
         public Report(string BrowserType, string url)
         {
             this.BrowserType = BrowserType;
             this.url = url;
             date = DateTime.Now;
             fileName = date.Date.Date.ToShortDateString() + date.TimeOfDay.Hours.ToString() + date.TimeOfDay.Minutes.ToString();
+            path = System.Reflection.Assembly.GetCallingAssembly().CodeBase;
+            actualPath = path.Substring(0, path.LastIndexOf("bin"));
+            projectPath = new Uri(actualPath).LocalPath;
+            filePath = projectPath + "Reports\\" + fileName + ".csv";
             reportcsv = new StringBuilder();
-            filePath = @"C:\Users\AnotherTestFramework\Reports\" + fileName + ".csv";
             CreateCsvFile();
+
         }
         private void CreateCsvFile()
         {

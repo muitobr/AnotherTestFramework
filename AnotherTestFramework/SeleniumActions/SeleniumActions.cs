@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using AnotherTestFramework.DriverOptions;
+using AnotherTestFramework.ReportingStuff;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +36,6 @@ namespace AnotherTestFramework.SeleniumActions
                     return null;
             }
         }
-
 
         public void ClickOn(string locatorType, string value)
         {

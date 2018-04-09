@@ -1,7 +1,5 @@
 ﻿using NUnit.Framework;
 using AnotherTestFramework.DriverOptions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 
 namespace AnotherTestFramework
 {
@@ -12,6 +10,7 @@ namespace AnotherTestFramework
         public void StartTest() // The method that will be fired at the start of the test
         {
             Browser.Init();
+
         }
 
         [TearDown]

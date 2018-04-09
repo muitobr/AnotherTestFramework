@@ -14,36 +14,41 @@ namespace AnotherTestFramework.ReportingStuff
         Report report;
         string browser;
         string url;
+        
         IWebDriver driver = Browser.GetDriver;
+
         public ReportManager(string browser, string url)
         {
             this.browser = browser;
             this.url = url;
             report = new Report(browser, url);
         }
+
         public void VerifyURL(string url)
         {
             string PageURL = driver.Url;
             string message = "The Current Url and Expected Url are not equals";
             if (PageURL.Equals(url))
             {
-                report.AddLine("Verify url", "PASS", "Url are Equals");
+                AddLog("Verify url", "PASS", "Url are Equals");
             }
             else
             {
-                report.AddLine("Verify url", "FAIL", message);
+                AddLog("Verify url", "FAIL", message);
             }
             Assert.AreEqual(PageURL, url, message);
         }
-        public void VerifyElementNotAppear(IWebElement element)
+
+        public void VerifyElementVisibility(IWebElement element)
         {
             if (!element.Displayed)
             {
                 string message = "Element does not exist";
                 Assert.Fail(message);
-                AddLog("Looking For Element" + element + "", "FAIL", element + " Should Be On The Page");
+                AddLog($"Looking For Element {element}", "FAIL", $"{element} Should Be On The Page");
             }
         }
+
         public void AddLog(string des, string res, string exp)
         {
             report.AddLine(des, res, exp);

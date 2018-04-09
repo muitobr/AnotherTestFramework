@@ -10,7 +10,7 @@ namespace AnotherTestFramework.TestWillBeTest
         [Test]
         public void SanityTest()
         {
-            HomePage.ClickSkipSignIn();
+            Page.homePage.ClickSkipSignIn();
         }
     }
 }
