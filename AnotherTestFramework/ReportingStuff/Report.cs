@@ -24,12 +24,18 @@ namespace AnotherTestFramework
         {
             this.BrowserType = BrowserType;
             this.url = url;
-            date = DateTime.Now;
-            fileName = date.Date.Date.ToShortDateString() + date.TimeOfDay.Hours.ToString() + date.TimeOfDay.Minutes.ToString();
             path = System.Reflection.Assembly.GetCallingAssembly().CodeBase;
             actualPath = path.Substring(0, path.LastIndexOf("bin"));
             projectPath = new Uri(actualPath).LocalPath;
-            filePath = projectPath + "Reports\\" + fileName + ".csv";
+
+            if (Directory.Exists(projectPath))
+                filePath = projectPath + "ReportingStuff\\" + string.Format("Report{0:ddMMyyyy_hhmmsstt}.csv", DateTime.Now);
+            else
+            {
+                Directory.CreateDirectory(projectPath);
+                filePath = projectPath + "ReportingStuff\\" + string.Format("Report{0:ddMMyyyy_hhmmsstt}.csv", DateTime.Now);
+            }
+
             reportcsv = new StringBuilder();
             CreateCsvFile();
 

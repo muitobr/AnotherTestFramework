@@ -24,7 +24,7 @@ namespace AnotherTestFramework.ReportingStuff
             report = new Report(browser, url);
         }
 
-        public void VerifyURL(string url)
+        public void verifyURL(string url)
         {
             string PageURL = driver.Url;
             string message = "The Current Url and Expected Url are not equals";
@@ -39,7 +39,7 @@ namespace AnotherTestFramework.ReportingStuff
             Assert.AreEqual(PageURL, url, message);
         }
 
-        public void VerifyElementVisibility(IWebElement element)
+        public void verifyElementVisibility(IWebElement element)
         {
             if (!element.Displayed)
             {
