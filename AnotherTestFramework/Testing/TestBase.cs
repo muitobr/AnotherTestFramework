@@ -10,7 +10,6 @@ namespace AnotherTestFramework
         public void StartTest() // The method that will be fired at the start of the test
         {
             Browser.Init();
-
         }
 
         [TearDown]

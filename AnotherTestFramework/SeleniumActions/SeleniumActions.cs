@@ -1,52 +1,80 @@
 ﻿using OpenQA.Selenium;
+using System.Configuration;
 using AnotherTestFramework.DriverOptions;
 using AnotherTestFramework.ReportingStuff;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AnotherTestFramework.SeleniumActions
 {
-    class SeleniumActions
+    public class SeleniumActions : Browser
     {
-
-        public By ElementLocator(string locatorType, string value)
+        public enum locator
+        {
+            Id,
+            Name,
+            ClassName,
+            XPath,
+            CssSelector,
+            LinkText,
+            PartialLinkText,
+            TagName
+        }
+        public By ElementLocator(locator locatorType, string value)
         {
             switch (locatorType)
             {
-                case "Id":
+                case locator.Id:
                     return By.Id(value);
-                case "Name":
+                case locator.Name:
                     return By.Name(value);
-                case "ClassName":
+                case locator.ClassName:
                     return By.ClassName(value);
-                case "XPath":
+                case locator.XPath:
                     return By.XPath(value);
-                case "CssSelector":
+                case locator.CssSelector:
                     return By.CssSelector(value);
-                case "LinkText":
+                case locator.LinkText:
                     return By.LinkText(value);
-                case "PartialLinkText":
+                case locator.PartialLinkText:
                     return By.PartialLinkText(value);
-                case "TagName":
+                case locator.TagName:
                     return By.TagName(value);
                 default:
                     return null;
             }
         }
 
-        public void ClickOn(string locatorType, string value)
+
+
+        public void CheckElement(locator locatorType, string value)
         {
             By locator;
             locator = ElementLocator(locatorType, value);
-            IWebElement element = Browser.GetDriver.FindElement(locator);
-
-            if (element.Displayed)
-            {
-                element.Click();
-            }
+            IWebElement element = GetDriver.FindElement(locator);
+            reports.verifyElementVisibility(element, locator);
         }
+
+
+        public void InputTextOn(locator locatorType, string value, string text)
+        {
+            By locator;
+            locator = ElementLocator(locatorType, value);
+            IWebElement element = GetDriver.FindElement(locator);
+            reports.verifyElementVisibility(element, locator);
+            element.Click();
+            element.Clear();
+            element.SendKeys(text);
+        }
+
+
+        public void ClickOn(locator locatorType, string value)
+        { 
+            By locator;
+            locator = ElementLocator(locatorType, value);
+            IWebElement element = GetDriver.FindElement(locator);
+            reports.verifyElementVisibility(element, locator);
+            element.Click();
+        }
+
+
     }
 }

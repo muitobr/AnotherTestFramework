@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -27,26 +28,30 @@ namespace AnotherTestFramework
             path = System.Reflection.Assembly.GetCallingAssembly().CodeBase;
             actualPath = path.Substring(0, path.LastIndexOf("bin"));
             projectPath = new Uri(actualPath).LocalPath;
-
-            if (Directory.Exists(projectPath))
-                filePath = projectPath + "ReportingStuff\\" + string.Format("Report{0:ddMMyyyy_hhmmsstt}.csv", DateTime.Now);
+            filePath = $"{projectPath}\\TestReport\\";
+  
+            if (Directory.Exists(filePath))
+            {
+                fileName = $"{projectPath}\\TestReport\\{string.Format("Report{0:ddMMyyyy_HHmmsstt}.csv", DateTime.Now, CultureInfo.InvariantCulture)}";
+            }
             else
             {
-                Directory.CreateDirectory(projectPath);
-                filePath = projectPath + "ReportingStuff\\" + string.Format("Report{0:ddMMyyyy_hhmmsstt}.csv", DateTime.Now);
+                Directory.CreateDirectory(filePath);
+                fileName = $"{projectPath}\\TestReport\\{string.Format("Report{0:ddMMyyyy_HHmmsstt}.csv", DateTime.Now, CultureInfo.InvariantCulture)}";
             }
 
             reportcsv = new StringBuilder();
             CreateCsvFile();
-
         }
+
         private void CreateCsvFile()
         {
             reportcsv.Append("StepDescription,");
             reportcsv.Append("Pass/Fail,");
             reportcsv.Append("Exception");
-            File.AppendAllText(filePath, reportcsv.ToString());
+            File.AppendAllText(fileName, reportcsv.ToString());
         }
+
         public void AddLine(string description, string result, string exception)
         {
             reportcsv.Append(Environment.NewLine);
@@ -54,7 +59,7 @@ namespace AnotherTestFramework
             reportcsv.Append(result + ",");
             reportcsv.Append(exception + ",");
             reportcsv.Append(Environment.NewLine);
-            File.WriteAllText(filePath, reportcsv.ToString());
+            File.WriteAllText(fileName, reportcsv.ToString());
         }
     }
 }

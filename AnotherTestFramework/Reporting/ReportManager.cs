@@ -14,7 +14,7 @@ namespace AnotherTestFramework.ReportingStuff
         Report report;
         string browser;
         string url;
-        
+
         IWebDriver driver = Browser.GetDriver;
 
         public ReportManager(string browser, string url)
@@ -39,13 +39,17 @@ namespace AnotherTestFramework.ReportingStuff
             Assert.AreEqual(PageURL, url, message);
         }
 
-        public void verifyElementVisibility(IWebElement element)
+        public void verifyElementVisibility(IWebElement element, By locator)
         {
             if (!element.Displayed)
             {
                 string message = "Element does not exist";
                 Assert.Fail(message);
-                AddLog($"Looking For Element {element}", "FAIL", $"{element} Should Be On The Page");
+                AddLog($"Verifying element {element}", "FAIL", $"{element} Should Be On The Page");
+            }
+            else
+            {
+                AddLog($"Verifying element {locator} ", "PASS", $"Element {locator} displayed");
             }
         }
 
