@@ -43,8 +43,6 @@ namespace AnotherTestFramework.SeleniumActions
             }
         }
 
-
-
         public void CheckElement(locator locatorType, string value)
         {
             By locator;

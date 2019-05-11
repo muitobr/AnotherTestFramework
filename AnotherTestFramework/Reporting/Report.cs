@@ -54,7 +54,7 @@ namespace AnotherTestFramework
 
         public void AddLine(string description, string result, string exception)
         {
-            reportcsv.Append(Environment.NewLine);
+            //reportcsv.Append(Environment.NewLine);
             reportcsv.Append(description + ",");
             reportcsv.Append(result + ",");
             reportcsv.Append(exception + ",");

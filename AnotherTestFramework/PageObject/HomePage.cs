@@ -11,6 +11,11 @@ namespace AnotherTestFramework.PageObject
             Actions.Selenium.CheckElement(CssSelector, "img#logo");
         }
 
+        public void ClickSignIn()
+        {
+            Actions.Selenium.ClickOn(Id, "btn1");
+        }
+
         public void ClickSkipSignIn()
         {
             Actions.Selenium.ClickOn(Id, "btn2");
@@ -19,6 +24,11 @@ namespace AnotherTestFramework.PageObject
         public void InputEmailAdress(string email)
         {
             Actions.Selenium.InputTextOn(Id, "email", email);
+        }
+
+        public void ClickEnterImage()
+        {
+            Actions.Selenium.ClickOn(Id, "enterimg");
         }
     }
 }
